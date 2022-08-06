@@ -1,0 +1,13 @@
+{
+    "manifest_version": 2,
+   
+    "name": "no-flip cstimer clock scrambles",
+    "version": "1.0.0",
+    "description": "converts cstimer scrambles into no-flip scrambles",
+   
+    "content_scripts": [{
+      "js": ["content.js"],
+      "matches": ["https://cstimer.net/*"]
+    }]
+   
+  }
