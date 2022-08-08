@@ -10,27 +10,21 @@ checkEvent();
 
 function checkEvent(){
     var events = document.getElementsByTagName("select");
-    try{
-        if (events[1].value=="clkwca" || events[32].value=="clkwca"){
-            scramble.style.fontSize=0;
-            waitFor(_ => document.getElementById("scrambleTxt").innerText != "Scrambling...")
-                .then(_ => {
-                    var currentScramble = document.getElementById("scrambleTxt").innerText;
-                    if (currentScramble!=previousScramble){
-                        previousScramble=currentScramble;
-                        document.getElementById("newScramble").innerText=convertScramble(currentScramble);
-                    }
-                });
-        }
-        else {
-            document.getElementById("newScramble").innerText="";
-            scramble.style.fontSize=scrambleSize;
-        }
+    if (events[events.length -10].value=="clkwca"){
+        scramble.style.fontSize=0;
+        waitFor(_ => document.getElementById("scrambleTxt").innerText != "Scrambling...")
+            .then(_ => {
+                var currentScramble = document.getElementById("scrambleTxt").innerText;
+                if (currentScramble!=previousScramble){
+                    previousScramble=currentScramble;
+                    document.getElementById("newScramble").innerText=convertScramble(currentScramble);
+                }
+            });
     }
-    catch(e){
+    else {
         document.getElementById("newScramble").innerText="";
         scramble.style.fontSize=scrambleSize;
-    } 
+    }
 }
 
 function convertScramble(s){
